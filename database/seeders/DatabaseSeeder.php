@@ -2,22 +2,34 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeders.
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // Defina o número de registros que você deseja inserir
+        $quantidade = 10;
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        for ($i = 0; $i < $quantidade; $i++) {
+            // Escolha aleatoriamente entre 'CPF' e 'CNPJ'
+            $tipoDocumento = (rand(0, 1) === 0) ? 'CPF' : 'CNPJ';
+
+            DB::table('users')->insert([
+                'name' => 'Test User ' . Str::random(5), // Nome único para cada usuário
+                'email' => 'test' . Str::random(5) . '@example.com', // Email único
+                'email_verified_at' => Carbon::now(), // Data e hora atuais
+                'password' => bcrypt('password'), // Senha criptografada
+                'remember_token' => Str::random(10), // Token aleatório
+                'created_at' => Carbon::now(), // Data e hora atuais
+                'updated_at' => Carbon::now(), // Data e hora atuais
+            ]);
+        }
     }
 }
