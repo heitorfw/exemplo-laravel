@@ -10,7 +10,7 @@ class Comissao extends Model
     use HasFactory;
 
     // Defina o nome da tabela se não seguir a convenção plural do Laravel
-    protected $table = 'vendedores';
+    protected $table = 'comissoes';
 
     // Defina os campos que podem ser preenchidos em massa
     protected $fillable = [

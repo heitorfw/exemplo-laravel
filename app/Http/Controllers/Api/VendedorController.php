@@ -114,6 +114,7 @@ class VendedorController extends Controller
                 'message' => 'novo registro não editado' . $e->getMessage(),
             ], 400);
         }
+
         
     }
    public function destroy(Vendedor $vendedor){
@@ -133,4 +134,6 @@ class VendedorController extends Controller
     
     }
   }
+
+  
 }

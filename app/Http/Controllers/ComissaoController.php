@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\ComissaoRequest;
 
-use App\Models\Vendedor;
+
 use App\Models\Comissao;
 use Illuminate\Http\JsonResponse;
 use Exception;
@@ -13,7 +13,7 @@ class ComissaoController extends Controller
 {
     public function index() : JsonResponse
     {
-        $comissoes= Comissao::orderBy('id', 'ASC')->paginate(2);
+        $comissoes= Comissao::orderBy('id', 'ASC')->paginate(1);
         return response()->json([
             'status' => true,
             'contatos' => $comissoes,

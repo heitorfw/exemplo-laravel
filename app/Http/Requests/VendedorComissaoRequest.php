@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Validation\Rule;
-class ComissaoRequest extends FormRequest
+class VendedorComissaoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,14 +24,13 @@ class ComissaoRequest extends FormRequest
     public function rules(): array
     {
        
-        //$vendedorId = $this->route('vendedor'); 
+        $vendedorId = $this->route('vendedor'); 
+        $comissaoId = $this->route('comissao');
         
         return [
-            'porcentagem' => 'required|numeric|min:0',
-            'valor_fixo' => 'required|numeric|min:0',
-            'nome' => 'required|string|max:255',
-            'data_inicio' => 'required|date',
-            'data_fim' => 'required|date',
+            'ativo' => 'required',
+            'vendedores' => 'sometimes',
+            'contatos' => 'sometimes',
         ];
     }
     protected function failedValidation(Validator $validator)
@@ -43,11 +42,9 @@ class ComissaoRequest extends FormRequest
     public function messages()
         {
             return [
-                'data_inicio.required' => 'O campo data_inicio é obrigatório.',
-                'data_fim.required' => 'O campo data_fim é obrigatório.',
-                'nome.required' => 'O campo nome é obrigatório.',
-                'porcentagem.required'=> 'O campo porcentagem é obrigatório',
-                'valor_fixo.required' => 'O valor_fixo é obrigatório.',
+                'comissao_id.exists' => 'a comissão especificado não existe.',
+                'ativo.required' => 'campo ativo é obrigatório',
+                'vendedor_id.exists' => 'O vendedor especificado não existe.',
             ];
         }
 

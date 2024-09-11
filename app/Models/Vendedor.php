@@ -9,10 +9,9 @@ class Vendedor extends Model
 {
     use HasFactory;
 
-    // Defina o nome da tabela se não seguir a convenção plural do Laravel
+    
     protected $table = 'vendedores';
 
-    // Defina os campos que podem ser preenchidos em massa
     protected $fillable = [
         'nome',
         'documento',
@@ -21,7 +20,7 @@ class Vendedor extends Model
         'contatos',
     ];
 
-    // Defina os campos que são casted para tipos específicos
+    
     protected $casts = [
         'data_fechamento' => 'date',
     ];

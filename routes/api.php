@@ -5,14 +5,17 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\VendedorController;
 use App\Http\Controllers\ContatoController;
 use App\Http\Controllers\ComissaoController;
+use App\Http\Controllers\VendedorComissaoController;
 Route::get('/vendedores', [VendedorController::class, 'index'] );
 Route::get('/vendedores/{vendedor}', [VendedorController::class, 'show']);
 Route::post('/vendedores', [VendedorController::class, 'store']);
 Route::patch('/vendedores/{vendedor}', [VendedorController::class, 'update']);
 Route::delete('/vendedores/{vendedor}', [VendedorController::class, 'destroy']);
+Route::post('/registrarComissao', [VendedorComissaoController::class, 'store']);
 
 Route::get('/contatos', [ContatoController::class, 'index']);
 Route::get('/contatos/{contato}', [ContatoController::class, 'show']);
+
 Route::post('/contatos', [ContatoController::class, 'store']);
 Route::patch('/contatos/{contato}', [ContatoController::class, 'update']);
 Route::delete('/contatos/{contato}', [ContatoController::class, 'destroy']);
