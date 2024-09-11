@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Vendedor extends Model
+class Comissao extends Model
 {
     use HasFactory;
 
@@ -15,19 +15,17 @@ class Vendedor extends Model
     // Defina os campos que podem ser preenchidos em massa
     protected $fillable = [
         'nome',
-        'documento',
-        'tipo_documento',
-        'data_fechamento',
-        'contatos',
+        'porcentagem',
+        'valor_fixo',
+        'data_inicio',
+        'data_fim',
     ];
 
     // Defina os campos que são casted para tipos específicos
     protected $casts = [
-        'data_fechamento' => 'date',
+        'data_inicio' => 'date',
+        'data_fim' => 'date',
     ];
 
-    public function contatos()
-    {
-        return $this->hasMany(Contato::class);
-    }
+    
 }

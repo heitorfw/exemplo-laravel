@@ -37,6 +37,7 @@ class VendedorRequest extends FormRequest
             ],
             'tipo_documento' => 'required|string|in:CPF,CNPJ',
             'data_fechamento' => 'required|date',
+            'contatos' => 'sometimes',
         ];
     }
 
